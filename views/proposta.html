@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block title %}{% endblock %}
+
+
+{% block content %}
+
+  <div class="container">
+
+    <h1>Proposta</h1>
+
+    Código Cotação: {{proposta.codigo_cotacao}} Fornecedor: {{proposta.nm_fornecedor}}
+
+    <!--<form method="post" action="/proposta/{{proposta.id_proposta}}?_method=PUT">
+      <div class="form-group">
+        <label>Contato</label>
+        <input type="text" name="contato" class="form-control" value="{{proposta.contato}}" required >
+      </div>
+      <button type="submit" class="btn btn-default">Save</button>
+    </form>-->
+
+    <table class="table table-striped">
+      <thead>
+          <tr>
+            <td>
+              Produto
+            </td>
+            <td>
+              Vlr. Unitário
+            </td>
+            <td>
+              Quantidade
+            </td>
+            <td>
+              Vlr. Total
+            </td>
+            <td>
+            </td>
+          </tr>
+      </thead>
+      <tbody>
+        {% for item_proposta in itens_propostas %}
+          <tr>
+            <td>{{item_proposta.nm_produto}}</td>
+            <td>{{item_proposta.vlr_unitario}}</td>
+            <td>{{item_proposta.qtd}}</td>
+            <td>{{item_proposta.vlr_total}}</td>
+            <td><a href="/item_proposta/{{item_proposta.id_item_proposta}}" class="btn btn-default">Editar</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+
+{% endblock %}

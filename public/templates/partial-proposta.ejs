@@ -1,0 +1,130 @@
+<div class="container">
+    <div class="page-header">
+        <h2>Proposta da Cotacao {{propostasData[0].codigo_cotacao}}</h2>
+    </div>
+    <h3>Dados Proposta</h3>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="inputFrete" class="col-md-2 form-control-label">Frete:</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="inputFrete">
+            </div>
+            <label class="form-control-label col-md-2" for="selectFormaPagto">Forma pagto:</label>
+            <div class="col-md-4">
+                <select name="" id="selectFormaPagto" class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label col-md-2" for="inputPrazoPagto">Prazo pagto:</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="inputPrazoPagto">
+            </div>
+            <label class="form-control-label col-md-2" for="inputTipoPagto">Tipo Pagto:</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="inputTipoPagto">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label col-md-2" for="inputDataPagto">Data Pagto:</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="inputDataPagto">
+            </div>
+            <label class="form-control-label col-md-2" for="inputPrazoEntrega">Prazo Entrega:</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="inputPrazoEntrega">
+            </div>
+        </div>
+    </form>
+    <h3>Produtos</h3>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td>
+                    Descrição
+                </td>
+                <td>
+                    Unid.
+                </td>
+                <td>
+                    Observação Cotação
+                </td>
+                <td>
+                    Qtd. Cotada
+                </td>
+                <td>
+                    Qtd. Proposta
+                </td>
+                <td>
+                    Preço unit. Proposta
+                </td>
+                <td>
+                    Total Proposta
+                </td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-show="propostasData[0].id_item_proposta > 0" ng-repeat="proposta in propostasData">
+                <td>{{proposta.nm_produto}}</td>
+                <td>{{proposta.descr_red_unid_med}}</td>
+                <td>{{proposta.observacao}}</td>
+                <td>{{proposta.qtd_cotacao | number}}</td>
+                <td>{{proposta.qtd_proposta | number}}</td>
+                <td>{{proposta.vlr_unitario | currency}}</td>
+                <td>{{proposta.vlr_total | currency}}</td>
+                <td><a href="#">Editar</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="pull-right">
+        <button class="btn btn-primary">
+            <span class="glyphicon glyphicon-chevron-left"></span> Voltar 
+        </button>
+        <button class="btn btn-primary">
+            <span class="glyphicon glyphicon-floppy-disk"></span> Salvar
+        </button>
+        <button class="btn btn-success">
+            <span class="glyphicon glyphicon-ok"></span> Salvar e Finalizar proposta
+        </button>
+    </div>
+    <!--<ul ng-repeat="proposta in propostasData">
+        <li>
+            Produto:  {{proposta.nm_produto}}
+
+            <form name="itemPropostaForm" ng-submit="salvaItemProposta(proposta, itemPropostaForm.$valid)" novalidate>
+                <div class="form-group" ng-class="{'has-error': itemPropostaForm.qtd.$invalid}">
+                    <label>Quantidade</label>
+                    <input type="text" name="qtd" class="form-control" ng-model="proposta.qtd" smart-float required>
+                    <p ng-show="itemPropostaForm.qtd.$invalid && !itemPropostaForm.qtd.$pristine" class="help-block">É necessário preencher a quantidade.</p>
+                    <span class="help-block" ng-show="itemPropostaForm.qtd.$error.float">
+                        Valor inválido
+                    </span>
+                </div>
+                <div class="form-group"  ng-class="{'has-error': itemPropostaForm.vlr_unitario.$invalid}">
+                    <label>Valor</label>
+                    <hd-number-only-input input-value="proposta.vlr_unitario" required>
+                    <input type="text" name="vlr_unitario" class="form-control" ng-model="proposta.vlr_unitario" smart-float required>
+                    <p ng-show="itemPropostaForm.vlr_unitario.$invalid && !itemPropostaForm.vlr_unitario.$pristine" class="help-block">É necessário preencher o valor.</p>
+                    <span class="help-block" ng-show="itemPropostaForm.vlr_unitario.$error.float && !itemPropostaForm.vlr_unitario.$pristine">
+                        Valor inválido
+                    </span>
+
+                </div>
+                <div class="form-group" ng-class="{'has-error': itemPropostaForm.cod_fabricante.$invalid && !itemPropostaForm.cod_fabricante.$pristine}">
+                    <label>Fabricante</label>
+                    <select name="cod_fabricante" class="form-control" ng-model="proposta.cod_fabricante" ng-options="fabricante.id_fabricante as fabricante.nm_fabricante for fabricante in fabricantesData" required>
+                        <option value="">Selecione o fabricante</option>
+                    </select>
+                    <p ng-show="itemPropostaForm.cod_fabricante.$invalid && !itemPropostaForm.cod_fabricante.$pristine" class="help-block">É necessário preencher o fabricante.</p>
+                    <span class="help-block" ng-show="itemPropostaForm.cod_fabricante.$error.required && !itemPropostaForm.cod_fabricante.$pristine">
+                        Campo em branco
+                    </span>
+                </div>
+                <button type="submit" class="btn btn-default" ng-disabled="itemPropostaForm.$invalid">Save</button>
+            </form>
+            
+            {{fabricanteSelecionado}}
+        </li>
+    </ul>-->
+
+</div>

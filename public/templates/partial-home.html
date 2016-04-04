@@ -1,0 +1,60 @@
+<!-- partial-home.html -->
+
+<div class="container">
+    <div class="page-header">
+        <!--<h2 class="text-center">{{hospitalData.nome}}</h2>-->
+    </div>
+    <h3>Cotações</h3>
+    <!--<form class="form-inline" role="form">
+        <div class="form-group">
+            <label>Status:</label>
+            <select class="form-control" name="cod_fabricante" ng-model="searchCotacao.descr_status_cotacao">
+                <option value="">Todas as Cotações</option>
+                <option value="COTAÇÃO ABERTA">Cotações Abertas</option>
+                <option value="FALTA CARTA CONVITE">Falta Carta Convite</option>
+                <option value="CARTA CONVITE ENVIADA">Carta Convite Enviada</option>
+                <option value="AGUARDANDO PROPOSTA">Aguardando Proposta</option>
+                <option value="COTAÇÃO ENCERRADA">Cotações Encerradas</option>
+                <option value="PROPOSTA RECEBIDA">Proposta Recebida</option>
+            </select>
+        </div>
+    </form><br>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td>
+                    <a href="#" ng-click="sortType = 'codigo_cotacao'; sortReverse = !sortReverse">
+                        Código
+                        <span ng-show="sortType == 'codigo_cotacao' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'codigo_cotacao' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'descr_cotacao'; sortReverse = !sortReverse">
+                        Cotação
+                        <span ng-show="sortType == 'descr_cotacao' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'descr_cotacao' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'descr_status_cotacao'; sortReverse = !sortReverse">
+                        Situação
+                        <span ng-show="sortType =='descr_status_cotacao' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType =='descr_status_cotacao' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    Proposta
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="cotacao in cotacoesData | orderBy:sortType:sortReverse | filter:searchCotacao:strict">
+                <td>{{cotacao.codigo_cotacao}}</td>
+                <td>{{cotacao.descr_cotacao}}</td>
+                <td>{{cotacao.descr_status_cotacao}}</td>
+                <td><a ui-sref="proposta({ id_proposta : cotacao.id_proposta})">Proposta</a></td>
+            </tr>
+        </tbody>
+    </table>-->
+</div>
