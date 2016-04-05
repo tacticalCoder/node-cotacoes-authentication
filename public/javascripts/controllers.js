@@ -6,24 +6,24 @@ angular.module('nodeCotacoes').controller('mainController', function($scope, $ht
     $scope.sortReverse = false;
     $scope.searchCotacao = {"descr_status_cotacao":"COTAÇÃO ABERTA"};
 
-    // $http.get('/api/cotacoes')
-    //     .success(function(data) {
-    //         $scope.cotacoesData = data;
-    //         console.log(data);
-    //     })
-    //     .error(function(error) {
-    //         console.log('Error: ' + error);
-    //     });
+    $http.get('/api/cotacoes')
+        .success(function(data) {
+            $scope.cotacoesData = data;
+            console.log(data);
+        })
+        .error(function(error) {
+            console.log('Error: ' + error);
+        });
         
         
-    // $http.get('/api/hospital')
-    //     .success(function(data) {
-    //         $scope.hospitalData = data[0];
-    //         console.log(data);
-    //     })
-    //     .error(function(error) {
-    //         console.log('Error: ' + error);
-    //     });
+    $http.get('/api/hospital')
+        .success(function(data) {
+            $scope.hospitalData = data[0];
+            console.log(data);
+        })
+        .error(function(error) {
+            console.log('Error: ' + error);
+        });
 
 
 });

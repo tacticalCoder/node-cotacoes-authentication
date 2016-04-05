@@ -20,7 +20,7 @@ Fornecedor.findOne = function(username, callback){
 	var client = new pg.Client(database.url);
 	client.connect();
 
-	client.query("select * from fornecedores where username = $1",[username], function(err, result){
+	client.query("select * from sigh.fornecedores where username = $1",[username], function(err, result){
 		var fornecedor;
 
 		if (err) {
@@ -46,7 +46,7 @@ Fornecedor.findOne = function(username, callback){
 Fornecedor.findById = function(id, callback){
 	var client = new pg.Client(database.url);
 	client.connect();
-	client.query("select * from fornecedores where id_fornecedores = $1",[id], function(err, result){
+	client.query("select * from sigh.fornecedores where id_fornecedores = $1",[id], function(err, result){
 
 		if (err) {
 			return callback(err, null);

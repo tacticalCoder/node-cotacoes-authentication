@@ -10,33 +10,55 @@ angular.module('nodeCotacoes').factory('AuthService',['$q','$timeout', '$http', 
     });
     
     function isLoggedIn(){
+        // var deferred = $q.defer();
+        
+        // $http.get('/user/status')
+        //     .success(function(data){
+        //         if(data.status){
+        //             user = true;
+        //             deferred.resolve();
+        //         } else {
+        //             user = false;
+        //             deferred.reject();
+        //         }
+        //     })
+        //     .error(function(data){
+        //         user = false;
+        //         deferred.reject();
+        //     });
+        // getUserStatus();
+        
         if(user){
             return true;
         } else {
             return false;
         }
+        
+        // return deferred.promise;
     };
     
     function getUserStatus(){
+        var deferred = $q.defer();
 
         $http.get('/user/status')
             .success(function(data){
                 if(data.status){
                     user = true;
-                    return user;
-                    console.log('GetUserStatus USuario: ' + user);
+                    deferred.resolve();
+                    console.log('GetUserStatus Usuario: ' + user);
                 } else {
                     user = false;
-                    return user;
+                    deferred.resolve();
                     console.log('GetUserStatus USuario: ' + user);
                 }
             })
             .error(function(data){
                 user = false;
-                return user;
+                deferred.resolve();
                 console.log('GetUserStatus USuario: ' + user);
             });
            
+        return deferred.promise;
     };
     
     function login(username, password){

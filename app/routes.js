@@ -121,7 +121,7 @@ module.exports = function(app, passport){
     });
   });
 
-  app.get('/api/fabricantes', function(req, res){
+  app.get('/api/fabricantes', isLoggedIn, function(req, res){
       
       var results = [];
       
@@ -176,10 +176,10 @@ module.exports = function(app, passport){
   
   app.get('/user/logout', function(req, res) {
       req.logout();
-      res.status(200).json({
-            status: 'Bye!'
-        });
-    //   res.redirect('/');
+    //   res.status(200).json({
+    //         status: 'Bye!'
+    //     });
+      res.redirect('/user/login');
   });
 
 //   app.post('/user/login', passport.authenticate('local-login', {
@@ -196,7 +196,7 @@ module.exports = function(app, passport){
             });
         }
         res.status(200).json({
-            status: true
+            status: true , user: req.user 
         });
     });
 
@@ -242,5 +242,5 @@ function isLoggedIn(req, res, next) {
     console.log('is not logged in');
 
     // if they aren't redirect them to the home page
-    res.redirect('/login');
+    res.redirect('/');
 }

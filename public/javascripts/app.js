@@ -50,16 +50,23 @@ app.config(["$locationProvider","$stateProvider", "$urlRouterProvider",function(
 app.run(function($rootScope, $state, $location, AuthService){
   
     $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
-        AuthService.getUserStatus();
-        if (toState.module === 'private' && !AuthService.isLoggedIn()){
-            // the user is not authorized, do not switch to state
-            console.log('previnindo default route');
-            event.preventDefault();
-            // go to login page
-            console.log('indo para rota login');
-            console.log(AuthService.isLoggedIn());
-            $state.go('login');
-        }
+        console.log("isloggedIn" + AuthService.isLoggedIn());
+        AuthService.getUserStatus().then(
+            function(){
+                console.log("isloggedIn" + AuthService.isLoggedIn());
+                if (toState.module === 'private' && !AuthService.isLoggedIn()){
+                    // the user is not authorized, do not switch to state
+                    console.log('previnindo default route');
+                    event.preventDefault();
+                    // go to login page
+                    console.log('indo para rota login');
+                    console.log(AuthService.isLoggedIn());
+                    $state.go('login');
+                }
+            }
+        );
+        // console.log("isLoggedIn : " + AuthService.isLoggedIn());
+        
     });
 });
 
